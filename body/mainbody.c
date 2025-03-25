@@ -3,7 +3,6 @@
 #include "../header/mainbody.h"
 
 boolean ListEmpty (List L)
-/* Mengirim true jika List Kosong */
 {
 	return (First(L) == Nil);
 }
@@ -15,9 +14,8 @@ void CreateList (List * L)
 
 address Alokasi (infotype X)
 {
-	 /* Kamus Lokal */
 	address P;
-	 /* Algoritma */
+
 	P = (address) malloc (sizeof (ElmtList));
 	if (P != Nil)		/* Alokasi berhasil */
 	{
@@ -37,10 +35,9 @@ void DeAlokasi (address P)
 
 address Search (List L, infotype X)
 {
-	 /* Kamus Lokal */
 	address P;
 	boolean found =  false;
-	 /* algoritma */
+
 	P = First(L);
 	while ((P != Nil) && (!found))
 	{
@@ -48,27 +45,30 @@ address Search (List L, infotype X)
 		{	found = true; 	}
 		else
 		{	P = Next(P);	}
-	}	/* P = Nil atau Ketemu */
+	}
 	
 	return (P);
 }
 
 boolean FSearch (List L, address P)
 {
-	 /* Kamus Lokal */
-	 boolean found=false;
-	 address PSearch;
-	 /* Algortima */
-	 PSearch = First(L);
-	 while ((PSearch != Nil) && (!found))
-	 {
-		if (PSearch == P)
-		{	found = true; 	}
-		else
-		{	PSearch = Next(PSearch);	}
-	 }	/* PSearch = Nil atau Ketemu */
-	 
-	 return (found);
+	boolean found=false;
+	address PSearch;
+	/* Algortima */
+	PSearch = First(L);
+	while ((PSearch != Nil) && (!found))
+    {
+        if (PSearch == P)
+        {	
+            found = true; 	
+        }
+        else
+        {	
+            PSearch = Next(PSearch);	
+        }
+	}
+	
+	return (found);
 }
 
 address SearchPrec (List L, infotype X)
@@ -81,18 +81,24 @@ address SearchPrec (List L, infotype X)
 	P = First(L);
 	while ((P != Nil) && (!found))
 	{
-		 if (Info(P) == X)
-		 {	found = true;	}
-		 else
-		 {
+		if (Info(P) == X)
+		{	
+            found = true;	
+        }
+		else
+		{
 			Prec = P;
 			P = Next(P);
-		 }
-	}    /* P = Nil atau Ketemu */
+		}
+	}
 	if (found)
-	{	return (Prec);		}
+	{	
+        return (Prec);		
+    }
 	else
-	{	return (Nil);		}
+	{	
+        return (Nil);		
+    }
 }
 
 void InsVFirst (List * L, infotype X)
@@ -104,11 +110,8 @@ void InsVFirst (List * L, infotype X)
 	P = Alokasi(X);
 
 	if(P != Nil){
-		Next(P) = First(*L);
-		First(*L) = P;
+        InsertFirst(L, P);
 	}
-
-	//Buatkan algoritma sesuai spesifikasi modul ini
 }
 
 void InsVLast (List * L, infotype X)
@@ -119,49 +122,33 @@ void InsVLast (List * L, infotype X)
 	 /* Algoritma */
 	P = Alokasi(X);
 
-	temp = First(*L);
-
-	while (Next(temp) != Nil)
-	{
-		temp = Next(temp);
-	}
-
-	Next(temp) = P;
-	 //Buatkan algoritma sesuai spesifikasi modul ini
+    if(P != Nil){
+        InsertLast(L, P);
+    }
 }
 
 void DelVFirst (List * L, infotype * X)
 {
-	 /* Kamus Lokal */
-	address P;
-	 /* Algoritma */
-	P = First(*L);
+    address P;
 
-	*X = Info(P);
-	First(*L) = Next(P);
-	DeAlokasi(P);
-	
-	 //Buatkan algoritma sesuai spesifikasi modul ini
+    DelFirst(L, &P);
+
+    if(P != Nil){
+        *X = Info(P);
+        DeAlokasi(P);
+    }
 }
 
 void DelVLast (List * L, infotype * X)
 {
-	 /* Kamus Lokal */
-	address PDel, Prev;
-	 /* Algoritma */
-	PDel = First(*L);
+    address P;
 
-	while (Next(PDel) != Nil)
-	{
-		Prev = PDel;
-		PDel = Next(PDel);
-	}
+    DelLast(L, &P);
 
-	*X = Info(PDel);
-	Next(Prev) = Nil;
-	DeAlokasi(PDel);
-	
-	 //Buatkan algoritma sesuai spesifikasi modul ini
+    if(P != Nil){
+        *X = Info(P);
+        DeAlokasi(P);
+    }
 }
 
 void InsertFirst (List * L, address P)
@@ -201,13 +188,10 @@ void InsertLast (List * L, address P)
 	}
 
 	Next(Last) = P;
-	 
-	 //Buatkan algoritma sesuai spesifikasi modul ini
 }
 
 void DelFirst (List * L, address * P)
 {
-	//Buatkan algoritma sesuai spesifikasi modul ini
 	address temp;
 
 	temp = First(*L);
@@ -218,7 +202,6 @@ void DelFirst (List * L, address * P)
 		DeAlokasi(temp);
 	}
 }
-
 
 void DelP (List * L, infotype X)
 {
@@ -261,7 +244,6 @@ void DelLast (List * L, address * P)
 		Next(Prec) = Nil;
 		DeAlokasi(temp);
 	}
-	 //Buatkan algoritma sesuai spesifikasi modul ini
 }
 
 void DelAfter (List * L, address * Pdel, address Prec)

@@ -48,23 +48,25 @@ void Pop (Stack *S, infotype *X)
 	DelVFirst(S, X); // nama modul disesuaikan dengan pseudocode linked list pribadi
 }
 
-void KonversiDesimalBiner(infotype desimal)
+void KonversiDesimalBiner(infotype X)
 {
     Stack S, temp;
     int sisa;
 
     CreateEmpty(&S);
 
-    while (desimal > 0) {
-        sisa = desimal % 2;
+    while (X > 0) {
+        sisa = X % 2;
         Push(&S, sisa);
-        desimal /= 2;
+        X /= 2;
     }
 
     printf("Hasil konversi biner: ");
+
     while (!IsEmpty(S)) {
         Pop(&S, &sisa);
         printf("%d", sisa);
     }
     printf("\n");
+    printf("======================== \n");
 }
