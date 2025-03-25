@@ -5,13 +5,13 @@
 #include "../header/stack.h"
 
 /**** Perubahan nilai komponen struktur ****/
-void SetTop (Stack *S, Stack NewTop )
-/* Memberi Nilai TOP yang baru dengan NewTop */
-{
-	if (NewTop != NULL) {
-        *S = NewTop; // Menggeser top ke alamat yang baru
-    }
-}
+// void SetTop (Stack *S, Stack NewTop )
+// /* Memberi Nilai TOP yang baru dengan NewTop */
+// {
+// 	if (NewTop != NULL) {
+//         *S = NewTop; // Menggeser top ke alamat yang baru
+//     }
+// }
 
 /*    PROTO TYPE    */
 /**** Konstruktor/Kreator ****/
@@ -20,14 +20,14 @@ void CreateEmpty (Stack *S)
 /* FS : Membuat sebuah stack S yang kosong */
 /* Ciri stack kosong : TOP bernilai NULL */
 {
-	*S = NULL;
+	First(*S) = NULL;  
 }
 
 /**** Predikat untuk test keadaan KOLEKSI ****/
-bool IsEmpty (Stack S)
+boolean IsEmpty (Stack S)
 /* Mengirim true jika Stack Kosong */
 {
-	return (isEmpty(S));
+	return (ListEmpty(S));
 }
 
 /**** Menambahkan sebuah elemen ke Stack ****/
@@ -61,16 +61,10 @@ void KonversiDesimalBiner(infotype desimal)
         desimal /= 2;
     }
 
-    SetTop(&temp, S);
-
     printf("Hasil konversi biner: ");
     while (!IsEmpty(S)) {
         Pop(&S, &sisa);
         printf("%d", sisa);
     }
     printf("\n");
-
-    SetTop(&S, temp);
 }
-
-

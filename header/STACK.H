@@ -3,16 +3,15 @@
 /*		 	  Top adalah alamat elemen puncak */
 /* Dibuat oleh : Ade Chandra Nugraha*/
 
-#ifndef stack_H
-#define stack_H
+#ifndef stack_h
+#define stack_h
+#include "boolean.h"
 #include "mainbody.h"  //nama header disesuaikan dengan program linked list pribadi
 
-/* Null adalah stack dengan elemen kosong. */
-/* Contoh deklarasi variabel bertype stack dengan ciri TOP bertype address (Head)*/
-typedef address Stack ;
+typedef List Stack ;
 
 /**** Perubahan nilai komponen struktur ****/
-void SetTop(Stack *S, Stack NewTop);
+// void SetTop(Stack *S, Stack NewTop);
 /* Memberi Nilai TOP yang baru dengan NewTop */
 
 /*    PROTO TYPE    */
@@ -23,7 +22,7 @@ void CreateEmpty (Stack *S);
 /* Ciri stack kosong : TOP bernilai NULL */
 
 /**** Predikat untuk test keadaan KOLEKSI ****/
-bool IsEmpty (Stack S);
+boolean IsEmpty (Stack S);
 /* Mengirim true jika Stack Kosong */
 
 /**** Menambahkan sebuah elemen ke Stack ****/
@@ -41,4 +40,3 @@ void Pop (Stack *S, infotype *X);
 void KonversiDesimalBiner(infotype desimal);
 
 #endif
-
