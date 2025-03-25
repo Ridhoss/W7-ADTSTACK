@@ -13,7 +13,11 @@
 //     }
 // }
 
-/*    PROTO TYPE    */
+
+
+
+
+/*    PROTOTYPE    */
 /**** Konstruktor/Kreator ****/
 void CreateEmpty (Stack *S)
 /* IS : S sembarang */

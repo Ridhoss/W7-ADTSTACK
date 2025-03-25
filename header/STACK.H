@@ -13,7 +13,7 @@
 typedef List Stack ;
 
 /**** Perubahan nilai komponen struktur ****/
-void SetTop(Stack *S, Stack NewTop);
+// void SetTop(Stack *S, Stack NewTop);
 /* Memberi Nilai TOP yang baru dengan NewTop */
 
 /*    PROTO TYPE    */
